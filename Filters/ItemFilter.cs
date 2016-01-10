@@ -3,7 +3,7 @@ using Filters.Models;
 
 namespace Filters
 {
-    public class TaskFilter
+    public class ItemFilter
     {
         public Section FilterItems(IEnumerable<Item> items, string query)
         {

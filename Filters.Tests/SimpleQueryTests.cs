@@ -11,7 +11,7 @@ namespace Filters.Tests
     [TestClass]
     public class SimpleQueryTests
     {
-        private static TaskFilter _taskFilter;
+        private static ItemFilter _itemFilter;
         private Fixture _fixture;
 
         private const int ItemsToGenerate = 10000;
@@ -19,7 +19,7 @@ namespace Filters.Tests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            _taskFilter = new TaskFilter();
+            _itemFilter = new ItemFilter();
         }
 
         [TestInitialize]
@@ -37,7 +37,7 @@ namespace Filters.Tests
             string query = date.ToString("yyyy-MM-dd");
 
             // Act
-            Section section = _taskFilter.FilterItems(items, query);
+            Section section = _itemFilter.FilterItems(items, query);
 
             // Assert
             section.Title.Should().Be(date.ToString("MMM d"));
@@ -54,7 +54,7 @@ namespace Filters.Tests
             IEnumerable<Item> items = _fixture.CreateMany<Item>(ItemsToGenerate).ToArray();
 
             // Act
-            Section section = _taskFilter.FilterItems(items, query);
+            Section section = _itemFilter.FilterItems(items, query);
 
             // Assert
             section.Title.Should().Be($"Priority {priority}");
@@ -71,7 +71,7 @@ namespace Filters.Tests
             string query = text;
 
             // Act
-            Section section = _taskFilter.FilterItems(items, query);
+            Section section = _itemFilter.FilterItems(items, query);
 
             // Assert
             section.Title.Should().Be($"Search for: '{text}'");
